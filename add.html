@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Appointments Manager</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <h1>Add Appointment</h1>
+  <div>
+    <label for="location">Location:</label>
+    <select name="location" id="location" required>
+      <option value="luzon">Luzon</option>
+      <option value="visayas">Visayas</option>
+      <option value="mindanao">Mindanao</option>
+    </select>
+  <br>
+  <div>
+    <label for="status">Status:</label>
+    <select name="status" id="status" required>
+      <option value="queue">Queue</option>
+      <option value="completed">Completed</option>
+      <option value="cancel">Cancel</option>
+      <option value="skip">Skip</option>
+    </select>
+  </div>
+  <div>
+    <label for="queuedate">Date:</label>
+    <input type="date" id="queuedate" name="queuedate" required>
+  </div>
+  <div>
+    <label for="type">Type:</label>
+    <select name="type" id="type" required>
+      <option value="consultation">Consultation</option>
+    </select>
+  </div>
+  <div>
+    <label for="isVirtual">Is it Virtual:</label>
+    <select name="isVirtual" id="isVirtual" required>
+      <option value="1">Yes</option>
+      <option value="0">No</option>
+    </select>
+  </div>
+  <div>
+    <label for="age">Age:</label>
+    <input type="number" id="age" name="age" required>
+  </div>
+  <div>
+    <label for="city">City:</label>
+    <input type="text" id="city" name="city" required >
+  </div>
+  <div>
+    <label for="province">Province:</label>
+    <input type="text" id="province" name="province" required >
+  </div>
+  <div>
+    <label for="regionName">Region Name:</label>
+    <select name="regionName" id="regionName" required>
+      <option value="National Capital Region (NCR)">National Capital Region (NCR)</option>
+      <option value="Cordillera Administrative Region (CAR)">Cordillera Administrative Region (CAR)</option>
+      <option value="Ilocos Region (I)">Ilocos Region (I)</option>
+      <option value="Cagayan Valley (II)">Cagayan Valley (II)</option>
+      <option value="Central Luzon (III)">Central Luzon (III)</option>
+      <option value="CALABARZON (IV-A)">CALABARZON (IV-A)</option>
+      <option value="MIMAROPA (IV-B)">MIMAROPA (IV-B)</option>
+      <option value="Bicol Region (V)">Bicol Region (V)</option>
+      <option value="Western Visayas (VI)">Western Visayas (VI)</option>
+      <option value="Central Visayas (VII)">Central Visayas (VII)</option>
+      <option value="Eastern Visayas (VIII)">Eastern Visayas (VIII)</option>
+      <option value="'Zamboanga Peninsula (IX)">Zamboanga Peninsula (IX)</option>
+      <option value="Northern Mindanao (X)">Northern Mindanao (X)</option>
+      <option value="Davao Region (XI)">Davao Region (XI)</option>
+      <option value="SOCCSKSARGEN (Cotabato Region) (XII)">SOCCSKSARGEN (Cotabato Region) (XII)</option>
+      <option value="Caraga (XIII)">Caraga (XIII)</option>
+      <option value="Bangsamoro Autonomous Region in Muslim Mindanao (BARMM)">Bangsamoro Autonomous Region in Muslim Mindanao (BARMM)</option>
+    </select>
+  </div>
+  <br>
+  <button onclick="addAppointment()">Add Appointment</button>
+  <div id="appointments"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>

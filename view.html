@@ -1,0 +1,29 @@
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appointments Manager</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    
+    <h1>View Appointment</h1>
+    <div>
+      <label for="location">Location:</label>
+      <select name="location" id="location">
+        <option value="luzon">Luzon</option>
+        <option value="visayas">Visayas</option>
+        <option value="mindanao">Mindanao</option>
+      </select>
+      <br>
+      <label for="pxid">PXID:</label>
+      <input type="text" id="pxid" name="pxid">
+      <br>
+      <br>
+      <button onclick="searchAppointment()">Search</button>
+      
+    </div>
+    <script src="script.js"></script>
+  </body>
+  </html>

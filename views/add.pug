@@ -1,0 +1,71 @@
+doctype html 
+html 
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title Appointments Manager
+        link(rel="stylesheet", href="style.css")
+    body
+        h1 Add Appointment
+        div
+            label(for="location") Location:
+            select(name="location", id="location", required)
+                option(value="luzon") Luzon
+                option(value="visayas") Visayas
+                option(value="mindanao") Mindanao
+        br
+        div
+            label(for="pxid") PXID:
+            input(type="text" id="pxid" name="pxid")
+        div
+            label(for="status") Status:
+            select(name="status", id="status", required)
+                option(value="queue") Queue
+                option(value="completed") Completed
+                option(value="cancel") Cancel
+                option(value="skip") Skip
+        div
+            label(for="queuedate") Date:
+            input(type="date", id="queuedate", name="queuedate", required)
+        div
+            label(for="type") Type:
+            select(name="type", id="type", required)
+                option(value="consultation") Consultation
+        div
+            label(for="isVirtual") Is it Virtual:
+            select(name="isVirtual", id="isVirtual", required)
+                option(value="1") Yes
+                option(value="0") No
+        div
+            label(for="age") Age:
+            input(type="number", id="age", name="age", required)
+        div
+            label(for="city") City:
+            input(type="text", id="city", name="city", required)
+        div
+            label(for="province") Province:
+            input(type="text", id="province", name="province", required)
+        div
+            label(for="regionName") Region Name:
+            select(name="regionName", id="regionName", required)
+                option(value="National Capital Region (NCR)") National Capital Region (NCR)
+                option(value="Cordillera Administrative Region (CAR)") Cordillera Administrative Region (CAR)
+                option(value="Ilocos Region (I)") Ilocos Region (I)
+                option(value="Cagayan Valley (II)") Cagayan Valley (II)
+                option(value="Central Luzon (III)") Central Luzon (III)
+                option(value="CALABARZON (IV-A)") CALABARZON (IV-A)
+                option(value="MIMAROPA (IV-B)") MIMAROPA (IV-B)
+                option(value="Bicol Region (V)") Bicol Region (V)
+                option(value="Western Visayas (VI)") Western Visayas (VI)
+                option(value="Central Visayas (VII)") Central Visayas (VII)
+                option(value="Eastern Visayas (VIII)") Eastern Visayas (VIII)
+                option(value="'Zamboanga Peninsula (IX)") Zamboanga Peninsula (IX)
+                option(value="Northern Mindanao (X)") Northern Mindanao (X)
+                option(value="Davao Region (XI)") Davao Region (XI)
+                option(value="SOCCSKSARGEN (Cotabato Region) (XII)") SOCCSKSARGEN (Cotabato Region) (XII)
+                option(value="Caraga (XIII)") Caraga (XIII)
+                option(value="Bangsamoro Autonomous Region in Muslim Mindanao (BARMM)") Bangsamoro Autonomous Region in Muslim Mindanao (BARMM)
+        br
+        button(onclick="addAppointment()") Add Appointment
+        div#appointments
+    script(src="script.js")
