@@ -36,6 +36,9 @@ app.get('/appointment', (req, res) => {
 app.listen(6969, () => {
     console.log('Server is running 6969');
 });
+app.get('/view-appointment', (req, res) => {
+    res.render('view');
+});
 
 app.post('/add', (req, res) => {
     console.log('INSIDE HERE ADDING OF DATA POST REQUEST');
@@ -127,6 +130,38 @@ app.delete('/add', (req, res) => {
             }
             console.log('Appointment deleted successfully:', results);
             res.status(200).send('Appointment deleted successfully');
+        }
+    );
+});
+app.get('/appointment/:id', (req, res) => {
+    console.log('INSIDE GET APPOINTMENT');
+
+    const id = req.params.id;
+
+    // Select appointment from the database based on ID
+    connection.query(
+        'SELECT * FROM appointments WHERE id = ?',
+        [id],
+        (error, results, fields) => {
+            if (error) {
+                console.error('Error fetching appointment:', error);
+                res.status(500).send('Error fetching appointment');
+                return;
+            }
+
+            if (results.length === 0) {
+                console.log('Appointment not found');
+                res.status(404).send('Appointment not found');
+                return;
+            }
+
+            const appointment = results[0];
+            console.log('Appointment found:', appointment);
+            res.status(200).json({
+                data: {
+                    appointment,
+                },
+            });
         }
     );
 });

@@ -38,7 +38,6 @@ function addAppointment() {
     const data = getFormData();
     console.log(data);
     insertToDatabase(data);
-    alert("appointment added")
     // connect to the database
 }
 
@@ -95,7 +94,6 @@ function updateAppointment() {
     const toUpdateData = getUpdateFormValues();
     console.log(toUpdateData);
     updatePatientByAppointmentId(toUpdateData);
-    alert("appointment updated")
 }
 //------------------------------------ DELETING OF APPOINTMENT-------------------------------------
 
@@ -106,7 +104,6 @@ function deleteAppointment() {
         id: appointmentId,
     };
     deleteAppointmentById(data);
-    alert("appointment deleted")
 }
 async function deleteAppointmentById(data) {
     try {
@@ -126,4 +123,74 @@ async function deleteAppointmentById(data) {
     } catch (error) {
         console.error('Error:', error.message);
     }
+}
+function searchAppointment() {
+    const id = document.getElementById('appointmentId').value;
+
+    getAppointmentById(id);
+}
+async function getAppointmentById(id) {
+    try {
+        const response = await fetch(
+            `http://127.0.0.1:6969/appointment/${id}`,
+            {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json', // Specify content type as JSON
+                },
+            }
+        );
+
+        if (!response.ok) {
+            throw new Error('Failed to add appointment');
+        }
+
+        const appointment = await response.json(); // Extract JSON data from response body
+        console.log('Appointment found:', appointment);
+        displayAppointmentDetails(appointment.data.appointment);
+    } catch (error) {
+        console.error('Error:', error.message);
+    }
+}
+function displayAppointmentDetails(appointment) {
+    // Get the container element
+    const container = document.getElementById('appointmentDetails');
+
+    // Clear any existing content
+    container.innerHTML = '';
+
+    // Define the appointment details
+    const appointmentDetails = [
+        { label: 'Appointment Id:', value: appointment.id },
+        { label: 'PXID:', value: appointment.pxid },
+        { label: 'Location:', value: appointment.Region },
+        { label: 'Status:', value: appointment.status },
+        {
+            label: 'Date:',
+            value: new Date(appointment.QueueDate).toLocaleDateString(),
+        },
+        { label: 'Type:', value: appointment.type },
+        {
+            label: 'Is it Virtual:',
+            value: appointment.isVirtual === '1' ? 'Yes' : 'No',
+        },
+        { label: 'Age:', value: appointment.age },
+        { label: 'City:', value: appointment.City },
+        { label: 'Province:', value: appointment.Province },
+        { label: 'Region Name:', value: appointment.RegionName },
+    ];
+
+    // Create and append the HTML elements for each appointment detail
+    appointmentDetails.forEach((detail) => {
+        const div = document.createElement('div');
+        const label = document.createElement('label');
+        label.textContent = detail.label;
+        const input = document.createElement('input');
+        input.type = 'text';
+        input.value = detail.value;
+        input.disabled = true; // Set input field as disabled
+        div.appendChild(label);
+        div.appendChild(input);
+        container.appendChild(div);
+    });
 }
