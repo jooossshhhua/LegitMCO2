@@ -28,8 +28,9 @@ async function insertToDatabase(data) {
         if (!response.ok) {
             throw new Error('Failed to add appointment');
         }
-
-        console.log(response);
+        const newlyCreated = await response.json();
+        const id = newlyCreated.data.results.insertId;
+        alert(`Your appointment Id is: ${id}`);
     } catch (error) {
         console.error('Error:', error.message);
     }

@@ -12,14 +12,52 @@ const connection = mysql.createConnection({
     database: 'mco2',
 });
 app.use(express.json());
-// Connect to the database
+// Connect to the database1
 connection.connect((err) => {
     if (err) {
-        console.error('Error connecting to database:', err);
+        console.error('Error connecting to database1:', err);
         return;
     }
-    console.log('Connected to the database');
+    console.log('Connected to the database1');
 });
+
+
+const connection1 = mysql.createConnection({
+    host: 'ccscloud.dlsu.edu.ph',
+    port: 20076,
+    user: 'root',
+    password: 'STADVDB25PW',
+    database: 'mco2',
+});
+app.use(express.json());
+// Connect to the database2
+connection1.connect((err) => {
+    if (err) {
+        console.error('Error connecting to database2:', err);
+        return;
+    }
+    console.log('Connected to the database2');
+});
+
+
+const connection2 = mysql.createConnection({
+    host: 'ccscloud.dlsu.edu.ph',
+    port: 20077,
+    user: 'root',
+    password: 'STADVDB25PW',
+    database: 'mco2',
+});
+app.use(express.json());
+// Connect to the database3
+connection2.connect((err) => {
+    if (err) {
+        console.error('Error connecting to database3:', err);
+        return;
+    }
+    console.log('Connected to the database3');
+});
+
+
 
 app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, 'views'));
@@ -53,7 +91,11 @@ app.post('/add', (req, res) => {
                 return;
             }
             console.log('Data inserted successfully:', results);
-            res.status(200).send('Data inserted successfully');
+            res.status(200).json({
+                data: {
+                    results,
+                },
+            });
         }
     );
 });
